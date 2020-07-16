@@ -16,8 +16,8 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
- .main-a{
- 	margin-top : 100px;
+ .main{
+ 	margin-top : 80px;
  	position : relative;
  }
 
@@ -36,7 +36,10 @@
  strong {
  	font-weight : bold;
  }
-
+.btn-base-1 {
+	border : 1px solid;
+	border-color : black;
+}
 
 
 
