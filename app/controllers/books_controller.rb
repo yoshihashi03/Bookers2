@@ -7,12 +7,13 @@ class BooksController < ApplicationController
 	end
 
 	def show
-		@book = book.find(params[:id])
+		@books = Book.all
 		@book = Book.new
+		@user = book.user
 	end
 
 	def edit
-		@book = book.find(params[:id])
+		@book = Book.new
 	end
 
 	def update
@@ -27,7 +28,7 @@ class BooksController < ApplicationController
 	def create
 		@book = Book.new(book_params)
     	if @book.save
-      		redirect_to @book, notice: 'Book was successfully created.'
+      		redirect_to book_path(@book), notice: 'Book was successfully created.'
     	else
       		@books = Book.all
       		@book = Book.new
