@@ -10,6 +10,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
+    <div class="container">
     <header class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -23,7 +24,7 @@
             <div class="navber-text navber-left">Bookers</div>
           </nav>
         </div>
-
+        <nav>
         <div class="collapse navbar-collapse" id="navbarEexample8">
           <ul class="nav navbar-nav navbar-right">
             <% if user_signed_in? %>
@@ -33,13 +34,15 @@
               <li><%= link_to " logout", destroy_user_session_path, method: :delete, class:"glyphicon glyphicon-log-out" %></li>
             <% else %>
               <li><%= link_to " Home", root_path, class:"glyphicon glyphicon-home" %></li>
-              <li><%= link_to " About", about_path, class:"glyphicon glyphicon-link" %></li>
+              <li><%= link_to " About", home_about_path, class:"glyphicon glyphicon-link" %></li>
               <li><%= link_to " sign up", new_user_registration_path, class:"glyphicon glyphicon-edit" %></li>
               <li><%= link_to " login", new_user_session_path, class:"glyphicon glyphicon-log-in" %></li>
             <% end %>
           </ul>
         </div>
+      </nav>
       </div>
+    </div>
     </header>
 
 
