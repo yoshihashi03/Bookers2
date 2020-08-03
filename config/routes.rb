@@ -7,4 +7,7 @@ Rails.application.routes.draw do
   	end
 	root :to => 'homes#top'
 	get 'home/about' => 'homes#about'
+
+	post 'follow/:id' => 'relationships#follow', as: 'follow'
+	post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow'
 end

@@ -13,6 +13,14 @@
 							<th>introduction</th>
 							<th><%= user.introduction %></th>
 						</tr>
+						<tr>
+							<th>follows</th>
+							<th><%= user.follower.count %></th>
+						</tr>
+						<tr>
+							<th>followers</th>
+							<th><%= user.followed.count %></th>
+						</tr>
 					</tbody>
 				</table>
 
@@ -21,6 +29,16 @@
 				<p class="actions">
 					<%= link_to "", edit_user_path(user), class:"col-xs-12 btn btn-default glyphicon glyphicon-wrench" %>
 				</p>
+				<% else %>
+					<p class="actions">
+						<% unless user == current_user %>
+						<% if current_user.following?(user) %>
+	        				<%= link_to "フォロー外す", unfollow_path(user.id), method: :POST, class:"btn btn-primary" %>
+	      					<% else %>
+	        				<%= link_to "フォローする", follow_path(user.id), method: :POST, class:"btn btn-info" %>
+	      				<% end %>
+	      				<% end %>
+	      			</p>
 			<% end %>
 			</div>
 
