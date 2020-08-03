@@ -11,5 +11,10 @@ class User < ApplicationRecord
 
   has_many :books, dependent: :destroy
   has_many :book_comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+
+  def already_favorite?(book)
+    self.favorites.exists?(book_id: book.id)
+  end
 
 end
