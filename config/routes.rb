@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   	end
 	root to: 'homes#top'
 	get 'home/about', to: 'homes#about'
+  get 'search/search', to: 'search#search'
   # get 'relationship/followed', to: 'relationships#followed'
   # get 'relationship/follower', to: 'relationships#follower'
 
