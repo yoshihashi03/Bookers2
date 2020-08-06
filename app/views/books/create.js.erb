@@ -1,0 +1,3 @@
+$("#book-<%= @book.id %>").html("<%= j(render 'books/favorite', {book:book} %>");
+
+$("#book-<%= @book.id %>").html("<%= j(render 'books/comment', {book:book} %>");
