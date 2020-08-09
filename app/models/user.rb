@@ -4,14 +4,14 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  attachment :profile_image
+  attachment :profile_image, destroy: false
 
   validates :name, presence: true, length: { minimum: 2, maximum: 20 }
   validates :introduction, length: { maximum: 50 }
 
-  has_many :books, dependent: :destroy
-  has_many :book_comments, dependent: :destroy
-  has_many :favorites, dependent: :destroy
+  has_many :books
+  has_many :book_comments
+  has_many :favorites
 
 
   has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy # フォロー取得
@@ -38,16 +38,5 @@ class User < ApplicationRecord
     self.favorites.exists?(book_id: book.id)
   end
 
-  def self.search(search, word)
-    if search == "forward_match"
-      @user = User.where("name LIKE?", "#{word}%")
-    elsif search == "backward_match"
-      @user = User.where("name LIKE?", "%#{word}")
-    elsif search == "perfect_match"
-      @user = User.where("name LIKE?", "#{word}")
-    elsif search == "partial_match"
-      @user = User.where("name LIKE?", "%#{word}%")
-    end
-  end
 
 end

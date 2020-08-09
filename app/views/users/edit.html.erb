@@ -1,19 +1,8 @@
-<% if @user.errors.any? %>
-    <div id="error_explanation" class="alert alert-danger">
-    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this object from being saved:</h2>
-    <ul>
-    <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-    <% end %>
-    </ul>
-    </div>
-<% end %>
 
-<p><%= notice %></p>
-<div class="container">
-<div class="row">
 <h2>User info</h2>
 <%= form_for(@user) do |f| %>
+    <%= render 'layouts/errors', obj: @user %>
+
 	<p class="field">
 		<%= f.label :name %>
     	<%= f.text_field :name %>
@@ -30,5 +19,3 @@
     	<%= f.submit "Update User", class:"btn btn-base-1 mt-20　border" %>
 	</p>
 <% end %>
-</div>
-</div>

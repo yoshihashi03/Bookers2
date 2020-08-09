@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-	before_action :authenticate_user!
+	before_action :authenticate_user!,only: [:create,:edit,:update,:destroy,:index]
 
 	def index
 		@books = Book.all
@@ -12,6 +12,7 @@ class BooksController < ApplicationController
 		@book = Book.find(params[:id])
 		@user = @book.user
 		@book_comment = BookComment.new
+		@book_comments = @book.book_comments
 	end
 
 	def edit
@@ -38,7 +39,6 @@ class BooksController < ApplicationController
     	if @book.save
       		redirect_to book_path(@book), notice: 'You have book created successfully.'
     	else
-      		@books = Book.all
       		render :index
     	end
 	end
